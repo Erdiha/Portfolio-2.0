@@ -18,13 +18,46 @@ const Home: NextPage = () => {
     }
   }, [windowWidth]);
 
+  useEffect(() => {
+    const getMainSection = document.getElementById('main-section')?.querySelectorAll('section')!;
+    if (getMainSection) {
+      getMainSection.forEach((item:any) => {
+        item.classList.add("translate-y-[3rem]")
+      })
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+         
+          setTimeout(() => {
+            entry.target.classList.toggle('active', entry.isIntersecting);
+          }, 100);
+          if (entry.isIntersecting) {
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    if (getMainSection) {
+      getMainSection.forEach((c) => {
+        observer.observe(c);
+      });
+    }
+  })
+
   return (
     <div className={styles.container}>
       <Head>
         <title>eH</title>
       </Head>
       <Navbar />
-      <main className=" block  justify-center items-center relative ">
+      <main
+        id="main-section"
+        className=" block  justify-center items-center relative ">
         <Hero />
         <Section />
         <Projects />

@@ -11,13 +11,12 @@ function Section() {
                 entry.target.classList.toggle('active', entry.isIntersecting);
             },100)
             if (entry.isIntersecting) {
-              console.log(entry);
               cardsObserver.unobserve(entry.target);
             }
           });
         },
         {
-          threshold: 1,
+          threshold: 1.0,
         }
       );
 
@@ -55,7 +54,7 @@ function Section() {
                    ${i === 0 ? 'text-red-500 mb-4 font-black' : 'text-black'}
                    ${item === undefined || item === ' '? ' bg-gray-600 ': 'bg-orange-100'}
                    ${j % 2 === 0 ? 'translate-x-[20vw]' : '-translate-x-[20vw]'}
-                   opacity-0 transform transition-all duration-[1s] ease-in-out
+                   opacity-0 transform transition-all duration-[1.5s] ease-in-out
                     rounded-lg cubes flex justify-center items-center font-bold text-2xl 
                     border-2  border-red-300  
                    `}>
@@ -72,13 +71,12 @@ function Section() {
       items-center
       min-h-[40vh]
      bg-gray-200">
-      {/* <p className='absolute
-          text-5xl
-          '>With Help Of </p> */}
-          <div id='tech-cubes' className=" min-w-[50vw] min-h-[50vh]  
+      <section
+        id="tech-cubes"
+        className=" min-w-[50vw] min-h-[50vh]  opacity-0  transition-all duration-500 ease-in-out
       grid grid-cols-10 gap-x-[0px] gap-y-2 p-4 md:m-[4rem]">
         {createBubbles()}
-      </div>
+      </section>
     </div>
   );
 }

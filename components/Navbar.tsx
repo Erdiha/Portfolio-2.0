@@ -21,9 +21,36 @@ function Navbar() {
   if (typeof window !== 'undefined') {
     window.addEventListener('resize', handleResize);
   };
+  useEffect(() => {
+    
+  //handle the scrool background color change
+  window.addEventListener("scroll", (e) => {
+    const getNavbarWrapper = document.getElementById('navbar-wrapper')!;
+    const getHamburgerWrapper = document.querySelector('.hamburger-wrapper')!;
+     const scroolY = window?.scrollY;
+    if (scroolY > 0) {
+      getNavbarWrapper.classList.add(
+        'md:bg-black/70',
+        'text-custom-white',
+        'bg-black/40',
+      );
+    }
+    else {
+      getNavbarWrapper.classList.remove(
+        'md:bg-black/70',
+        'text-custom-white',
+        'bg-black/40'
+      );
+    }
+      
+      getHamburgerWrapper.classList.add("border-white/70", "bg-custom-white");
+    
+  })
+  })
 
   useEffect(() => {
     const getUl = document.getElementById('navbar-ul')!;
+   
     setTimeout(() => {
         getUl?.classList.remove('opacity-0');
         getUl?.classList.add('opacity-1');
@@ -33,24 +60,26 @@ function Navbar() {
   const populateBurgerMenu = () => {
     return burgerClick ? (
       <ul
-      
         className="w-full h-full  flex 
         bg-gray-400  'text-orange-700'
        justify-around items-center flex-col">
         <Link href="/">
-          {' '}
-          <li>HOME</li>
+          <li onClick={() => setBurgerClick((prev) => !prev)}>HOME</li>
         </Link>
-        <Link href="/projects">
-          <li>PROJECTS</li>
+        <Link href="#projects" scroll={false}>
+          <li onClick={() => setBurgerClick((prev) => !prev)}>PROJECTS</li>
         </Link>
-        <Link href="/contact">
-          {' '}
-          <li>CONTACT</li>
+        <Link href="#" scroll={false}>
+          <li onClick={() => setBurgerClick((prev) => !prev)}>CONTACT</li>
         </Link>
       </ul>
     ) : (
-      <span className='bg-gray-300 rounded-full p-4 shadow-lg shadow-stone-400'>eH</span>
+      <span
+          className="bg-gray-300 rounded-full md:h-[4rem] h-[3rem] w-[3rem]  md:w-[4rem] items-center 
+        flex justify-center
+      shadow-lg shadow-stone-400">
+        eH
+      </span>
     );
   };
  useEffect(() => {
@@ -69,7 +98,6 @@ function Navbar() {
          'md:-rotate-[1440deg]',
          'md:font-black',
          'border-black',
-         'border-b-4',
          'active-icon'
        );
      }, 400);
@@ -77,7 +105,8 @@ function Navbar() {
  },[]);
   return (
     <div
-      className="w-full h-[6rem]  flex fixed z-[2]  justify-center rounded nav-wrapper
+      id="navbar-wrapper"
+      className="w-full h-[6rem]  flex fixed z-[2]  justify-center nav-wrapper first-letter:transition-all duration-300 ease-in-out
       items-center md:items-baseline
     ">
       <span
@@ -92,26 +121,28 @@ function Navbar() {
       </span>
       <ul
         id="navbar-ul"
-        className="w-[50%] absolute bottom-0 md:grid grid-cols-3 duration-300
-        md:text-3xl items-end hidden  transform transition-all opacity-0
+        className="min-w-[60%] absolute bottom-0 md:grid grid-cols-3 duration-300
+        md:text-3xl items-end hidden  transform transition-all opacity-0  px-2
       right-[10%] h-[5rem]">
-        <li className="mx-auto cursor-pointer">HOME</li>
-        <li className="mx-auto cursor-pointer">PROJECTS</li>
-        <li className="mx-auto cursor-pointer">CONTACT</li>
+        <Link href="/">
+          <li className="mx-auto text-center cursor-pointer">HOME</li>
+        </Link>
+        <Link href="#projects" scroll={false}>
+          <li className="mx-auto text-center cursor-pointer">PROJECTS</li>
+        </Link>
+        <Link href="#" scroll={false}>
+          <li className="mx-auto text-center cursor-pointer">CONTACT</li>
+        </Link>
       </ul>
       <div
         onClick={() => setBurgerClick((prev: boolean) => !prev)}
-        className={`hamburger-wrapper absolute y w-10 border-8
-        cursor-pointer md:hidden
-         border-custom-gray 
-         flex justify-center items-center
-        h-10 right-5   rounded-full `}>
+        className={`hamburger-wrapper absolute y w-10 border-8 cursor-pointer md:hidden
+         border-custom-gray flex justify-center items-center h-10 right-5 rounded-full `}>
         <span
-          className={`hamburger-item relative  ${
+          className={`hamburger-item relative h-3 w-3 transition-rotate duration-600 ease-in-out ${
             burgerClick
               ? ' -rotate-90 bg-red-600  scale-[1.1] animate-spin'
-              : 'rotate-0 bg-custom-gray animate-none'
-          }  h-3 w-3  transition-rotate duration-600 ease-in-out`}></span>
+              : 'rotate-0 bg-custom-gray animate-none'}`}></span>
       </div>
     </div>
   );

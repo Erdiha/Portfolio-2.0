@@ -4,16 +4,20 @@
 
 
 @layer components{
+  html { scroll-behavior: smooth; } 
   .active-icon{
     @apply top-[15rem]  w-full h-[24rem]
     text-sm rounded-none border-none;
   }
   .deactive-icon{
     @apply top-[2rem]  h-[4rem] w-[4rem] 
-     text-2xl md:text-4xl
-      rounded-full
+     text-2xl md:text-4xl md:h-[5rem] md:w-[5rem]
+    rounded-full
   }
   .cubes.active{
-    @apply translate-x-0 opacity-100
+    @apply translate-x-0 opacity-100 gap-0 border-0 rounded-none
+  }
+  section.active{
+    @apply translate-y-0 opacity-100
   }
 }
