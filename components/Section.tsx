@@ -30,23 +30,22 @@ function Section() {
   const bubbles: any = [];
   const sentences = [
     'SKILLS:',
-    'REACT',
-      'JAVASCRIPT',
+    'Python & C',
     'TYPESCRIPT',
+    'REACT',
+    'TAILWIND',
+    'NEXTJS',
     'CSS & SCSS',
     'HTML',
     'RestAPIs',
-    'TAILWIND',
-    'NEXTJS',
   ];
   const createBubbles = () => {
-    //console.log(sentences[0][0])
 
     let counter = 0;
     for (let i = 0; i < sentences.length; i++) {
       for (let j = 0; j < 10; j++) {
         counter += 1;
-        let item: any = sentences[i][j];
+        let item: string = sentences[i][j];
         bubbles.push(
           <span
             key={counter}
@@ -70,7 +69,7 @@ function Section() {
       className="flex justify-center flex-col
       items-center
       min-h-[40vh]
-     bg-gray-200">
+     ">
       <section
         id="tech-cubes"
         className=" min-w-[50vw] min-h-[50vh]  opacity-0  transition-all duration-500 ease-in-out

@@ -24,11 +24,13 @@ function Navbar() {
   useEffect(() => {
     
   //handle the scrool background color change
-  window.addEventListener("scroll", (e) => {
+  window.addEventListener("scroll", (e:any) => {
     const getNavbarWrapper = document.getElementById('navbar-wrapper')!;
     const getHamburgerWrapper = document.querySelector('.hamburger-wrapper')!;
-     const scroolY = window?.scrollY;
-    if (scroolY > 0) {
+    const getArrow = document.getElementById('arrow-button')!;
+    const scroolY = window?.scrollY;
+    if (scroolY >= 0) {
+      getArrow.innerHTML = "Just Like That, Scroll..."
       getNavbarWrapper.classList.add(
         'md:bg-black/70',
         'text-custom-white',
@@ -36,6 +38,7 @@ function Navbar() {
       );
     }
     else {
+       getArrow.classList.add("hidden")
       getNavbarWrapper.classList.remove(
         'md:bg-black/70',
         'text-custom-white',
@@ -60,18 +63,17 @@ function Navbar() {
   const populateBurgerMenu = () => {
     return burgerClick ? (
       <ul
-        className="w-full h-full  flex 
-        bg-gray-400  'text-orange-700'
+        className="w-full h-[40rem]  flex 
+        bg-gray-300  'text-orange-700 '
        justify-around items-center flex-col">
         <Link href="/">
-          <li onClick={() => setBurgerClick((prev) => !prev)}>HOME</li>
-        </Link>
-        <Link href="#projects" scroll={false}>
-          <li onClick={() => setBurgerClick((prev) => !prev)}>PROJECTS</li>
-        </Link>
-        <Link href="#" scroll={false}>
-          <li onClick={() => setBurgerClick((prev) => !prev)}>CONTACT</li>
-        </Link>
+          <li className='text-2xl' onClick={() => setBurgerClick((prev) => !prev)}>HOME</li></Link>
+        <Link className='text-2xl' href="#projects" scroll={false}>
+          <li className='text-2xl' onClick={() => setBurgerClick((prev) => !prev)}>PROJECTS</li></Link>
+        <Link className='text-2xl' href="#about" scroll={false}>
+          <li className='text-2xl' onClick={() => setBurgerClick((prev) => !prev)}>ABOUT</li></Link>
+        <Link className='text-2xl' href="#contact" scroll={false}>
+          <li className='text-2xl' onClick={() => setBurgerClick((prev) => !prev)}>CONTACT</li></Link>
       </ul>
     ) : (
       <span
@@ -121,7 +123,7 @@ function Navbar() {
       </span>
       <ul
         id="navbar-ul"
-        className="min-w-[60%] absolute bottom-0 md:grid grid-cols-3 duration-300
+        className="min-w-[60%] absolute bottom-0 md:grid grid-cols-4 duration-300
         md:text-3xl items-end hidden  transform transition-all opacity-0  px-2
       right-[10%] h-[5rem]">
         <Link href="/">
@@ -130,19 +132,23 @@ function Navbar() {
         <Link href="#projects" scroll={false}>
           <li className="mx-auto text-center cursor-pointer">PROJECTS</li>
         </Link>
-        <Link href="#" scroll={false}>
+        <Link href="#about" scroll={false}>
+          <li className="mx-auto text-center cursor-pointer">ABOUT</li>
+        </Link>
+        <Link href="#contact" scroll={false}>
           <li className="mx-auto text-center cursor-pointer">CONTACT</li>
         </Link>
       </ul>
       <div
         onClick={() => setBurgerClick((prev: boolean) => !prev)}
-        className={`hamburger-wrapper absolute y w-10 border-8 cursor-pointer md:hidden
+        className={`hamburger-wrapper absolute y w-10 border-8 cursor-pointer md:hidden z-50
          border-custom-gray flex justify-center items-center h-10 right-5 rounded-full `}>
         <span
-          className={`hamburger-item relative h-3 w-3 transition-rotate duration-600 ease-in-out ${
+          className={`hamburger-item relative z-50 h-3 w-3 transition-rotate duration-600 ease-in-out ${
             burgerClick
-              ? ' -rotate-90 bg-red-600  scale-[1.1] animate-spin'
-              : 'rotate-0 bg-custom-gray animate-none'}`}></span>
+              ? ' -rotate-90 bg-orange-600  scale-[1.1] animate-spin'
+              : 'rotate-0 bg-custom-gray animate-none'
+          }`}></span>
       </div>
     </div>
   );

@@ -9,6 +9,8 @@ import { useRecoilState } from 'recoil';
 import { atomWindowSize } from '../recoilAtom/AtomContext';
 import Section from '../components/Section';
 import Projects from '../components/Projects';
+import Contact from '../components/Contact';
+import About from '../components/About';
 
 const Home: NextPage = () => {
   const [windowWidth, setWndowWidth]: any = useRecoilState(atomWindowSize);
@@ -38,7 +40,7 @@ const Home: NextPage = () => {
         });
       },
       {
-        threshold: 0.5,
+        threshold: 0.2,
       }
     );
 
@@ -57,10 +59,17 @@ const Home: NextPage = () => {
       <Navbar />
       <main
         id="main-section"
-        className=" block  justify-center items-center relative ">
-        <Hero />
-        <Section />
+        className=" block justify-center items-center relative">
+        <div className="bg-gradient-to-t from-slate-400 to-white mb-12">
+          <Hero />
+          <Section />
+        </div >
+       
         <Projects />
+        <div className="bg-gradient-to-b from-slate-400 to-white my-12">
+          <About />
+          <Contact />
+        </div>
       </main>
 
       <footer className={styles.footer}></footer>
