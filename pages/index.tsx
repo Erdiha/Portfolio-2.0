@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Hero from '../components/Hero';
 import Navbar from '../components/Navbar';
-import { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
-import { atomWindowSize } from '../recoilAtom/AtomContext';
-import Section from '../components/Section';
+import { atomWindowSize,atomNavbarItems } from '../recoilAtom/AtomContext';
+import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import About from '../components/About';
+import { useRecoilValue, useRecoilState } from 'recoil';
 
 const Home: NextPage = () => {
+  const [navbarItem,setNavbarItem] = useRecoilState(atomNavbarItems);
+
   const [windowWidth, setWndowWidth]: any = useRecoilState(atomWindowSize);
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -21,6 +22,7 @@ const Home: NextPage = () => {
   }, [windowWidth]);
 
   useEffect(() => {
+    
     const getMainSection = document.getElementById('main-section')?.querySelectorAll('section')!;
     if (getMainSection) {
       getMainSection.forEach((item:any) => {
@@ -60,13 +62,13 @@ const Home: NextPage = () => {
       <main
         id="main-section"
         className=" block justify-center items-center relative">
-        <div className="bg-gradient-to-t from-slate-400 to-white mb-12">
+        <div className="bg-gradient-to-t from-slate-400 to-white mb-12 ">
           <Hero />
-          <Section />
+          <Skills />
         </div >
        
         <Projects />
-        <div className="bg-gradient-to-b from-slate-400 to-white my-12">
+        <div className="bg-gradient-to-b from-slate-400 to-white mt-12">
           <About />
           <Contact />
         </div>

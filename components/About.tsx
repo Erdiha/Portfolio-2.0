@@ -5,21 +5,21 @@ import HandshakeIcon from '@mui/icons-material/Handshake';
 import Link from 'next/link';
 function About() {
   return (
-    <div
+    <section
       id="about"
-      className="scroll-mt-[10rem] font-arial flex  py-12 px-2  transition-all duration-300 ease-in-out
-      transition-all duration-300 ease-in-outtext-custom-white justify-center w-full
-        text-custom-white md:text-xl 
+      className="scroll-mt-[8rem] font-arial flex  py-12 px-2 
+      transition-all duration-300 ease-in-out justify-center w-full
+        text-custom-white md:text-xl md:border-custom-gray md:border-b-2
       ">
-      <section className="md:max-w-[50%] shadow-lg md:min-h-[40rem]">
+      <div className="md:w-[30rem] lg:w-[40rem] shadow-lg md:min-h-[40rem]">
         <h1
           className="row-span-3 font-halvetica pt-6 pb-4
           text-4xl tracking-tight font-extrabold text-center text-custom-white bg-custom-gray 
           ">
           About
-          <hr className="w-[40%] m-auto flex items-center m-2 mt-4" />
+          <hr className="w-[40%] m-auto flex items-center md:m-2 mt-4" />
         </h1>
-        <section className="bg-custom-gray md:p-12 md:min-h-[50%]">
+        <div className="bg-custom-gray md:p-12 md:min-h-[50%] p-4">
           <span className=" text-[20px] border-l-[1px] pl-1 border-custom-blue">
             Hi, I am Erdi.
             <p className="text-[15px] italic font-light opacity-75 mb-1 h-fit">
@@ -35,9 +35,9 @@ function About() {
               responsive,adaptive, and user-friendly Apps/Websites.
             </li>
           </ol>
-        </section>
+        </div>
 
-        <section
+        <div
           className="grid grid-cols-2 items-center p-4 bg-custom-gray gap-6 
             md:flex md:flex-col">
           <p
@@ -57,9 +57,9 @@ function About() {
               </button>
             </Link>
           </section>
-        </section>
-        <section className="grid grid-rows-2 items-center mt-2">
-          <section className="grid row-span-2 p-3">
+        </div>
+        <div className="grid grid-rows-2 items-center mt-2">
+          <div className="grid row-span-2 p-3">
             <ul
               className="grid h-full grid-cols-3 justify-around p-2 items-center 
           ">
@@ -73,10 +73,10 @@ function About() {
                 <HandshakeIcon fontSize="large" />
               </li>
             </ul>
-          </section>
-        </section>
-      </section>
-    </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 

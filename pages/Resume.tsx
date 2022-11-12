@@ -1,28 +1,101 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useRef ,useState} from 'react';
 import Navbar from '../components/Navbar';
-
+import { jsPDF } from 'jspdf';
+import { useEffect } from 'react';
 function resume() {
+  const [marginHandle, setMarginHandle] = useState(false);
+  const pdfRef:any = useRef(null);
+  let getSkillWrapper: any;
+  let getResumeIcon:any;
 
+  useEffect(() => {
+    getSkillWrapper = document.querySelectorAll('.skill-wrapper')!;
+    getResumeIcon = document.getElementById('resume-icon')!;
+ 
+    if(marginHandle){
+      getResumeIcon.classList.remove('pb-6','px-4');
+      getSkillWrapper.forEach((item: any) => {
+        item.classList.remove('pb-[6px]');
+        });
+      
+      };
+      
+  },[marginHandle]);
+
+   
+    const handleDownload = () => {
+      getSkillWrapper = document.querySelectorAll('.skill-wrapper')!;
+      getResumeIcon = document.getElementById('resume-icon')!;
+      getResumeIcon?.classList.add('pb-6','px-4');
+      getSkillWrapper?.forEach((item: any) => {
+        item.classList.add('pb-[6px]');
+      });
+      const content = pdfRef.current;
+      const doc: any = new jsPDF('p', 'pt', 'letter');
+
+      doc.html(
+        content,
+        {
+          callback: function (doc: any) {
+            doc.save('Erdi_Haciogullari_Resume.pdf');
+            setMarginHandle(true)
+          },
+          html2canvas: { scale: 0.7645 },
+        },
+      );
+      
+    };
+
+  const createSkills = () => {
+    const skills = ["JavaScript", "TypeScript", "NodeJS", "CSS3", "HTML5"
+      , "SCSS", "Tailwind", "BootStrap", "React", "Python",
+      "C/C#", "NextJS", "Recoil", "MongoDB", "Firebase", "GIT"];
+    const store:any = [];
+    
+    for (let skill of skills) {
+      store.push(
+        <span key={skill} className="bg-slate-200 text-black
+        skill-wrapper
+        font-semibold flex justify-center items-center">
+        {skill}
+        </span>
+      );
+    }
+    return store
+  };
     return (
       <>
-        
         <div className=" relative p-3 justify-center flex flex-col items-center min-w-screen min-h-screen  ">
-          <Link href="../">
+          
+          <div className=" flex flex-row p-2 md:max-w-[50rem] bg-slate-800 min-w-screen w-full 
+           gap-2 items-center justify-between">
+            <Link href="../">
+              <button
+                className="flex-1 justify-center  duration-400 items-center w-full  h-10 transition 
+                    md:hover:scale-105 md:hover:border-slate-700 duration-500
+                  md:hover:bg-white md:hover:border-4 md:hover:text-black
+                  md:w-[7rem] md:h-[5rem]  transtion ease-in-out 
+                  bg-slate-700 text-lg font-bold text-yellow-50
+                  ">
+                Back
+              </button>
+            </Link>
+            
             <button
-              className=" rounded-lg sticky flex justify-center  duration-400
-        items-center w-full  h-10 transition 
-        md:hover:scale-105 md:hover:border-slate-700 duration-500
-       md:hover:bg-white md:hover:border-4 md:hover:text-black
-      md:w-[7rem] md:h-[5rem]  top-4 left-6  lg:absolute transtion ease-in-out 
-       bg-slate-700 text-lg font-bold text-yellow-50 md:mb-5
-      ">
-              Go Back
+              onClick={handleDownload}
+              className="  flex-1 justify-center  duration-400 items-center w-full  h-10 transition 
+             md:hover:border-slate-700 duration-500
+                md:hover:bg-white md:hover:border-4 md:hover:text-black p-2
+                md:w-[7rem] md:h-[5rem]    transtion ease-in-out 
+              bg-slate-700 text-lg font-bold text-yellow-50
+              ">
+              Download as PDF
             </button>
-          </Link>
+          </div>
           <div
-            className="bg-slate-700 rounded-lg md:max-w-[50rem] 
-       text-white  px-2 pb-2 w-full ">
+            ref={pdfRef}
+            className="bg-slate-700  md:max-w-[50rem]  text-white  px-2 pb-2 w-full ">
             <div className="flex justify-between">
               <section className="text-start p-1 drop-shadow-md leading-8">
                 <h1 className="text-3xl drop-shadow-md">Erdi Haciogullari</h1>
@@ -33,10 +106,13 @@ function resume() {
                   Los Angeles, California
                 </p>
               </section>
-              <section className="flex justify-center items-center  md:mr-10">
+
+              <section className="flex justify-center p-auto items-center  md:mr-10">
                 <span
-                  className="h-[3rem] w-[3rem] font-bold rounded
-            flex items-center justify-center bg-white text-orange-700 text-3xl">
+                  id="resume-icon"
+                  className="h-fit w-fit font-bold rounded p-1
+                 
+            bg-white text-orange-700 text-3xl">
                   eH
                 </span>
               </section>
@@ -79,7 +155,7 @@ function resume() {
                     </span>
                   </p>
                 </div>
-                <hr className="border-[3px] mx-2 my-0 border-gray-300" />
+                <hr className="border-[3px] mx-2  my-1 border-gray-300" />
                 <div className="w-full  items-start px-2">
                   <p className="font-bold text-[14px] text-start">SUMMARY</p>
                   <ul className="text-start pl-5 text-[14px]">
@@ -100,7 +176,7 @@ function resume() {
                     </li>
                   </ul>
                 </div>
-                <hr className="border-[3px] mx-2 my-0 border-gray-300" />
+                <hr className="border-[3px] mx-2 my-1 border-gray-300" />
                 <div className="text-start px-2 ">
                   <p
                     className="font-bold 
@@ -130,7 +206,7 @@ function resume() {
                       As a team member, developed an indoor GPS.
                     </li>
                   </ul>
-                  <hr className="border-[1px]  mx-2 my-0 border-gray-300" />
+                  <hr className="border-[1px]  mx-2 my-1  border-gray-300" />
                   <i className="font-semibold text-gray-700 text-[14px]">
                     Airbnb
                   </i>
@@ -150,7 +226,7 @@ function resume() {
                       and property management skills.
                     </li>
                   </ul>
-                  <hr className="border-[1px] border-gray-300 mx-2 my-0" />
+                  <hr className="border-[1px] border-gray-300 m-2" />
                   <i className="font-semibold  text-[13px]  text-gray-700">
                     DOMA Project
                   </i>
@@ -164,61 +240,14 @@ function resume() {
                     </li>
                   </ul>
                 </div>
-                <hr className="border-[3px] mx-2 border-gray-300" />
-                <div className="px-2 ">
+                <hr className="border-[3px] mx-2 my-1 border-gray-300" />
+                <div className="px-2 py-1 ">
                   <p className=" tracking-wide font-bold text-[14px] text-start">
                     SKILLS
                   </p>
                 </div>
-                <div className="grid pb-2  w-full grid-cols-4 gap-1 px-2 tracking-wide text-[12px]">
-                  <span className="bg-slate-200 text-black font-semibold text-center">
-                    JavaScript
-                  </span>
-                  <span className="bg-slate-200 text-black font-semibold text-center">
-                    TypeScript
-                  </span>
-                  <span className="bg-slate-200 text-black font-semibold text-center">
-                    NodeJS
-                  </span>
-                  <span className="bg-slate-200 text-black font-semibold text-center">
-                    CSS3
-                  </span>
-                  <span className="bg-slate-200 text-black font-semibold text-center">
-                    SCSS
-                  </span>
-                  <span className="bg-slate-200 text-black font-semibold text-center">
-                    Tailwind
-                  </span>
-                  <span className="bg-slate-200 text-black font-semibold text-center">
-                    React
-                  </span>
-                  <span className="bg-slate-200 text-black font-semibold text-center">
-                    Python
-                  </span>
-                  <span className="bg-slate-200 text-black font-semibold text-center">
-                    Next.js
-                  </span>
-                  <span className="bg-slate-200 text-black font-semibold text-center">
-                    Express.js
-                  </span>
-                  <span className="bg-slate-200 text-black font-semibold text-center">
-                    Recoil
-                  </span>
-                  <span className="bg-slate-200 text-black font-semibold text-center">
-                    MangoDB
-                  </span>
-                  <span className="bg-slate-200 text-black font-semibold text-center">
-                    Firebase
-                  </span>
-                  <span className="bg-slate-200 text-black font-semibold text-center">
-                    HTML5
-                  </span>
-                  <span className="bg-slate-200 text-black font-semibold text-center">
-                    Git
-                  </span>
-                  <span className="bg-slate-200 text-black font-semibold text-center">
-                    C++/C#
-                  </span>
+                <div className="grid pb-2  w-full grid-cols-4 gap-1 text-center px-2 tracking-wide text-[12px]">
+                  {createSkills()}
                 </div>
               </section>
 
@@ -241,7 +270,7 @@ function resume() {
                     </span>{' '}
                   </p>
 
-                  <hr className="border-[1px]  border-gray-500" />
+                  <hr className="border-[1px] my-1  border-gray-500" />
                   <p className="italic font-bold text-gray-300 text-[14px]">
                     LACC <br />
                     <span className="font-semibold text-[12px] text-gray-300">
@@ -253,7 +282,7 @@ function resume() {
                     </em>
                   </p>
 
-                  <hr className="border-[1px] m-0 border-gray-500" />
+                  <hr className="border-[1px] m-0 my-1 border-gray-500" />
                   <p className="italic font-bold text-gray-300 text-[14px]">
                     UDEMY
                     <br />
@@ -264,7 +293,7 @@ function resume() {
                     </span>
                   </p>
                 </div>
-                <hr className="border-[3px] mx-2 border-gray-500" />
+                <hr className="border-[3px] mx-2 my-1 border-gray-500" />
                 <div>
                   <p className="font-bold px-2 py-0 text-[20px] text-start">
                     PROJECTS
@@ -287,7 +316,7 @@ function resume() {
                     </p>
                   </div>
                   <hr className="border-[1px] m-1 border-gray-500" />
-                  <div className="px-2 py-1">
+                  <div className="px-2">
                     <a className="italic font-semibold text-gray-200 " href="">
                       Quiz Game
                     </a>
@@ -301,7 +330,7 @@ function resume() {
                     </p>
                   </div>
                   <hr className="border-[1px] m-1 border-gray-500" />
-                  <div className="p-2">
+                  <div className="px-2">
                     <a className="italic font-semibold text-gray-200" href="">
                       Utility Website
                     </a>
@@ -316,7 +345,7 @@ function resume() {
                     </p>
                   </div>
                   <hr className="border-[1px] m-1 border-gray-500" />
-                  <div className="p-2">
+                  <div className="px-2">
                     <a className="italic font-semibold text-gray-200" href="">
                       Cya Website
                     </a>
@@ -331,21 +360,9 @@ function resume() {
                     </p>
                   </div>
                 </div>
-                <hr className="border-[3px]  m-1 border-gray-500" />
               </section>
             </div>
           </div>
-
-          <button
-            className=" rounded-lg sticky flex justify-center  duration-400
-        items-center w-full  h-10 transition 
-        md:hover:scale-105 md:hover:border-slate-700 duration-500
-       md:hover:bg-white md:hover:border-4 md:hover:text-black
-      md:w-[7rem] md:h-[5rem]  top-4 right-6  lg:absolute transtion ease-in-out 
-       bg-slate-700 text-lg font-bold text-yellow-50 md:mb-5
-      ">
-            Logout
-          </button>
         </div>
       </>
     );

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
 
-function Section() {
+function Skills() {
     if (typeof window !== 'undefined') {
       const getCards = document.querySelectorAll('.cubes')!;
       const cardsObserver = new IntersectionObserver(
@@ -51,11 +51,11 @@ function Section() {
             key={counter}
             className={`
                    ${i === 0 ? 'text-red-500 mb-4 font-black' : 'text-black'}
-                   ${item === undefined || item === ' '? ' bg-gray-600 ': 'bg-orange-100'}
+                   ${item === undefined || item === ' '? 'bg-gray-600': 'bg-orange-100'}
                    ${j % 2 === 0 ? 'translate-x-[20vw]' : '-translate-x-[20vw]'}
                    opacity-0 transform transition-all duration-[1.5s] ease-in-out
                     rounded-lg cubes flex justify-center items-center font-bold text-2xl 
-                    border-2  border-red-300  
+                    border-2  border-red-300  max-w-[3rem] max-h-[3rem] min-w-[1rem] min-h-[1rem]
                    `}>
             {item}
           </span>
@@ -72,12 +72,12 @@ function Section() {
      ">
       <section
         id="tech-cubes"
-        className=" min-w-[50vw] min-h-[50vh]  opacity-0  transition-all duration-500 ease-in-out
-      grid grid-cols-10 gap-x-[0px] gap-y-2 p-4 md:m-[4rem]">
+        className="  opacity-0  transition-all duration-500 ease-in-out w-[16rem] md:w-[30rem]
+      grid grid-cols-10  gap-y-2 py-4 md:m-[4rem]">
         {createBubbles()}
       </section>
     </div>
   );
 }
 
-export default Section
+export default Skills
