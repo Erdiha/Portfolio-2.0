@@ -4,15 +4,15 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Hero from '../components/Hero';
 import Navbar from '../components/Navbar';
-import { atomWindowSize,atomNavbarItems } from '../recoilAtom/AtomContext';
+import { atomWindowSize, atomNavbarItems } from '../recoilAtom/AtomContext';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import About from '../components/About';
-import { useRecoilValue, useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 const Home: NextPage = () => {
-  const [navbarItem,setNavbarItem] = useRecoilState(atomNavbarItems);
+  const [navbarItem, setNavbarItem] = useRecoilState(atomNavbarItems);
 
   const [windowWidth, setWndowWidth]: any = useRecoilState(atomWindowSize);
   useEffect(() => {
@@ -22,17 +22,17 @@ const Home: NextPage = () => {
   }, [windowWidth]);
 
   useEffect(() => {
-    
-    const getMainSection = document.getElementById('main-section')?.querySelectorAll('section')!;
+    const getMainSection = document
+      .getElementById('main-section')
+      ?.querySelectorAll('section')!;
     if (getMainSection) {
-      getMainSection.forEach((item:any) => {
-        item.classList.add("translate-y-[3rem]")
-      })
+      getMainSection.forEach((item: any) => {
+        item.classList.add('translate-y-[3rem]');
+      });
     }
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-         
           setTimeout(() => {
             entry.target.classList.toggle('active', entry.isIntersecting);
           }, 100);
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
         });
       },
       {
-        threshold: 0.2,
+        threshold: 0.1,
       }
     );
 
@@ -51,7 +51,7 @@ const Home: NextPage = () => {
         observer.observe(c);
       });
     }
-  })
+  });
 
   return (
     <div className={styles.container}>
@@ -62,11 +62,11 @@ const Home: NextPage = () => {
       <main
         id="main-section"
         className=" block justify-center items-center relative">
-        <div className="bg-gradient-to-t from-slate-400 to-white mb-12 ">
+        <div className="bg-gradient-to-b from-slate-400 to-transparent mb-12 ">
           <Hero />
           <Skills />
-        </div >
-       
+        </div>
+
         <Projects />
         <div className="bg-gradient-to-b from-slate-400 to-white mt-12">
           <About />

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import HandshakeIcon from '@mui/icons-material/Handshake';
@@ -45,7 +45,7 @@ function About() {
             font-semibold  text-xl border-r-[1px]">
             RESUME
           </p>
-          <section className="grid grid-cols-2 gap-4 py-2 ">
+          <div className="grid grid-cols-2 gap-4 py-2 ">
             <Link href="" passHref>
               <button className="p-2 border-[1px]   text-custom-blue font-semibold">
                 PDF
@@ -56,7 +56,7 @@ function About() {
                 HTML
               </button>
             </Link>
-          </section>
+          </div>
         </div>
         <div className="grid grid-rows-2 items-center mt-2">
           <div className="grid row-span-2 p-3">
@@ -80,4 +80,4 @@ function About() {
   );
 }
 
-export default About
+export default About;

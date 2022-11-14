@@ -1,12 +1,11 @@
 import React from 'react';
 import { ICard } from '../data-types/types';
-import Image from 'next/image'
-
+import Image from 'next/image';
 
 function Cards(props: ICard) {
   return (
     <section
-      className="max-w-sm bg-custom-white rounded-lg border opacity-0  transition-all duration-500 ease-in-out
+      className="max-w-sm bg-custom-white rounded-lg border opacity-0  transition-all duration-300 ease-in-out
  border-gray-200 shadow-lg dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
         <img

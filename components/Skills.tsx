@@ -1,32 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { useEffect } from 'react';
 
 function Skills() {
-    if (typeof window !== 'undefined') {
-      const getCards = document.querySelectorAll('.cubes')!;
-      const cardsObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-              setTimeout(() => {
-                entry.target.classList.toggle('active', entry.isIntersecting);
-            },100)
-            if (entry.isIntersecting) {
-              cardsObserver.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 1.0,
-        }
-      );
-
-      if (getCards) {
-        getCards.forEach((c) => {
-          cardsObserver.observe(c);
-        });
-      }
-    }
-    
   const bubbles: any = [];
   const sentences = [
     'SKILLS:',
@@ -40,7 +15,6 @@ function Skills() {
     'RestAPIs',
   ];
   const createBubbles = () => {
-
     let counter = 0;
     for (let i = 0; i < sentences.length; i++) {
       for (let j = 0; j < 10; j++) {
@@ -51,7 +25,11 @@ function Skills() {
             key={counter}
             className={`
                    ${i === 0 ? 'text-red-500 mb-4 font-black' : 'text-black'}
-                   ${item === undefined || item === ' '? 'bg-gray-600': 'bg-orange-100'}
+                   ${
+                     item === undefined || item === ' '
+                       ? 'bg-gray-600'
+                       : 'bg-orange-100'
+                   }
                    ${j % 2 === 0 ? 'translate-x-[20vw]' : '-translate-x-[20vw]'}
                    opacity-0 transform transition-all duration-[1.5s] ease-in-out
                     rounded-lg cubes flex justify-center items-center font-bold text-2xl 
@@ -64,6 +42,31 @@ function Skills() {
     }
     return bubbles;
   };
+  useEffect(() => {
+    const getCards = document.querySelectorAll('.cubes')!;
+    const cardsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setTimeout(() => {
+            entry.target.classList.toggle('activeCube', entry.isIntersecting);
+          }, 100);
+          if (entry.isIntersecting) {
+            cardsObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 1.0,
+      }
+    );
+
+    if (getCards) {
+      getCards.forEach((c) => {
+        cardsObserver.observe(c);
+      });
+    }
+    createBubbles();
+  }, []);
   return (
     <div
       className="flex justify-center flex-col
@@ -80,4 +83,4 @@ function Skills() {
   );
 }
 
-export default Skills
+export default Skills;

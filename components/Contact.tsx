@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-interface IForm{
+interface IForm {
   email: string;
   subject?: string;
   message: string;
@@ -8,20 +8,20 @@ interface IForm{
 function contact() {
   const [userInfo, setUserInfo]: any = useState<IForm>();
   const handleOnChange = (e: any) => {
-    const {value,id} = e.target
+    const { value, id } = e.target;
     //console.log(id)
     setUserInfo((prev: any) => {
-      return {...prev,[id]:value}
-    })
-  }
-  console.log(userInfo)
+      return { ...prev, [id]: value };
+    });
+  };
+  console.log(userInfo);
   return (
     <>
       <section
         id="contact"
         className="flex flex-col items-center justify-center w-full p-2 text-custom-white
         transition-all duration-300 ease-in-out
-      md:mx-auto pt-12 scroll-mt-[6rem] ">
+      md:mx-auto pt-10 scroll-mt-[5rem] ">
         <section className=" md:w-[30rem] lg:w-[40rem] shadow-lg p-5  bg-custom-gray">
           <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
             <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center">
@@ -48,7 +48,7 @@ function contact() {
                   w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
                    dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500
                     dark:shadow-sm-light"
-                  placeholder="name@flowbite.com"
+                  placeholder="name@email.com"
                   required
                 />
               </div>
@@ -108,4 +108,4 @@ function contact() {
   );
 }
 
-export default contact
+export default contact;
