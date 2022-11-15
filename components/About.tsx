@@ -2,6 +2,7 @@ import React from 'react';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import HandshakeIcon from '@mui/icons-material/Handshake';
+
 import Link from 'next/link';
 function About() {
   return (
@@ -46,11 +47,15 @@ function About() {
             RESUME
           </p>
           <div className="grid grid-cols-2 gap-4 py-2 ">
-            <Link href="" passHref>
-              <button className="p-2 border-[1px]   text-custom-blue font-semibold">
-                PDF
-              </button>
-            </Link>
+            <a
+              download
+              href="../static/Erdi_Haciogullari_Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="p-2 border-[1px]   text-custom-blue font-semibold">
+              PDF
+            </a>
+
             <Link href="/Resume" passHref>
               <button className="p-2 border-[1px]  text-custom-blue font-semibold">
                 HTML

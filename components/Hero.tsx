@@ -47,10 +47,10 @@ function Hero() {
           clearTimeout(scaleItems);
         },
 
-        2000 + counter
+        1000 + counter
       );
 
-      counter += 8;
+      counter += 10;
     });
   }, []);
 
@@ -65,13 +65,13 @@ function Hero() {
         src="/bg.jpg"></Image>
       <section
         className=" md:w-[50rem]   relative min-h-[50%] border-l-4 border-custom-blue md:border-none
-        text-4xl grid grid-rows-5 drop-shadow-2xl   items-center justify-center bg-gradient-to-r md:from-red-600 to-transparent
+        text-4xl grid grid-rows-5 drop-shadow-2xl   items-center justify-center bg-gradient-to-r
          transition-all duration-[1000ms] ease-in-out ">
         {heroParagraph()}
         <div
           className="absolute moving-hero  md:grid grid-cols-[1fr] h-full
           w-[50%] hidden  left-0 right-0 mx-auto 
-        transition-all duration-[4s] ease-in-out 
+        transition-all duration-[3s] ease-in-out 
         ">
           {heroBackground()}
         </div>

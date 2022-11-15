@@ -1,12 +1,14 @@
 import Link from 'next/link';
 import React, { useRef, useState } from 'react';
-import Navbar from '../components/Navbar';
+
 import { jsPDF } from 'jspdf';
 import { useEffect } from 'react';
+import { allProj, techUsed } from '../data-types/data';
 function resume() {
   const [marginHandle, setMarginHandle] = useState(false);
   const pdfRef: any = useRef(null);
-  const columnsRef: any = useRef(null);
+  const codeREf: any = useRef(null);
+  const websiteRef: any = useRef(null);
   let getSkillWrapper: any;
   let getResumeIcon: any;
   let getResumeColumns: any;
@@ -141,7 +143,6 @@ function resume() {
             </section>
           </div>
           <div
-            ref={columnsRef}
             id="resume-columns"
             className=" flex flex-col md:flex-row font-light">
             <section className=" bg-white w-full md:w-[50%] text-black ">
@@ -320,69 +321,55 @@ function resume() {
               </div>
               <hr className="border-[3px] mx-2 my-1 border-gray-500" />
               <div>
-                <p className="font-bold px-2 py-0 text-[20px] text-start">
+                <p className="font-bold p-2  text-[20px] text-start">
                   PROJECTS
                 </p>
-
-                <div className="px-2">
-                  <a className="italic font-semibold text-gray-200" href="">
-                    MyFlix
-                  </a>
-                  <p className="italic text-[11px] pb-1">
-                    React, Firebase, Recoil, Next.js, TypeScript, API, Material
-                    UI.
-                  </p>
-                  <p className="text-[13px] leading-5 tracking-wider">
-                    MyFlix is mockup streaming service website created with
-                    inspiration of Netlix. The website can be used by creating
-                    an account and login into account. Home page will welcome
-                    you with many genre of movies and TV shows that you can add
-                    to your library and/or watch trailer of the item.
-                  </p>
-                </div>
-                <hr className="border-[1px] m-1 border-gray-500" />
-                <div className="px-2">
-                  <a className="italic font-semibold text-gray-200 " href="">
-                    Quiz Game
-                  </a>
-                  <p className="italic text-[11px] pb-1">JSX, React, SCSS </p>
-                  <p className="text-[13px] leading-5 tracking-wider">
-                    This app allows single or two users play the game. Once game
-                    started each user will have 10 seconds to answers the
-                    questions. Once 10 seconds is over, clicking on multiple
-                    choices are not allowed. once game is over, result of the
-                    game will be displayed upon cliking on the result button.
-                  </p>
-                </div>
-                <hr className="border-[1px] m-1 border-gray-500" />
-                <div className="px-2">
-                  <a className="italic font-semibold text-gray-200" href="">
-                    Utility Website
-                  </a>
-                  <p className="italic text-[11px] pb-1">
-                    TypeScript, CSS, API, Express.js, Axios.{' '}
-                  </p>
-                  <p className="text-[13px] leading-5 tracking-wider">
-                    Unique, querky website created for fun. You can navigate
-                    through the website to learn more about me, use calculator,
-                    check weather around the world, and play trivia!
-                  </p>
-                </div>
-                <hr className="border-[1px] m-1 border-gray-500" />
-                <div className="px-2">
-                  <a className="italic font-semibold text-gray-200" href="">
-                    Cya Website
-                  </a>
-                  <p className="italic text-[11px] pb-1">
-                    JSX, Firebase, MongoDB, CSS, Bootstrap, Express.
-                  </p>
-                  <p className="text-[13px] leading-5 tracking-wider">
-                    Cya app developt during my senior eyar at UCLA with four
-                    other peers. With cya app you can create an event, invite
-                    friends, vote for meeting time, create meeting groups and
-                    more...
-                  </p>
-                </div>
+                {allProj?.map((proj: any, index: number) => {
+                  return (
+                    <>
+                      <div key={index} className="p-2">
+                        <a
+                          className="italic font-semibold text-gray-200"
+                          href="">
+                          {proj.title}
+                        </a>
+                        <p className="italic text-[11px] pb-1">
+                          {techUsed[index]}
+                        </p>
+                        <p className="text-[13px] leading-5 tracking-wider">
+                          {proj.description}
+                        </p>
+                        <span className="px-1 text-[10px] flex fex-col gap-2 italic">
+                          <span>
+                            website <br />
+                            <a
+                              target="_blank"
+                              rel="noreferrer"
+                              href={proj.link}>
+                              {proj.link}
+                            </a>
+                          </span>
+                          <span>
+                            code <br />
+                            <a
+                              target="_blank"
+                              rel="noreferrer"
+                              href={proj.code}>
+                              {proj.code}
+                            </a>
+                          </span>
+                        </span>
+                      </div>
+                      <hr
+                        className={` ${
+                          index >= allProj.length - 1
+                            ? 'border-none'
+                            : 'border-[1px]'
+                        }  border-gray-500 m-1 `}
+                      />
+                    </>
+                  );
+                })}
               </div>
             </section>
           </div>

@@ -43,8 +43,8 @@
     @apply translate-y-0 opacity-100;
   }
   .hero-item.activehero {
-    @apply bg-gradient-to-r from-red-500
-    w-full
-    scale-x-[2];
+    @apply w-full
+    scale-x-[2]
+    bg-gradient-to-r from-red-500;
   }
 }
