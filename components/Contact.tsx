@@ -4,9 +4,9 @@ import emailjs from '@emailjs/browser';
 function contact() {
   const [sent, setSent]: any = useState(false);
   const handleOnChange = (e: any) => {};
-  const serviceKey:any = process.env.NEXT_PUBLIC_EMAIL_SERVICE;
-  const template:any = process.env.NEXT_PUBLIC_TEMPLATE;
-  const publicKey:any= process.env.NEXT_PUBLIC_PUBLIC_KEY;
+  const serviceKey:string = process.env.NEXT_PUBLIC_EMAIL_SERVICE!;
+  const templateKey:string = process.env.NEXT_PUBLIC_TEMPLATE!;
+  const publicKey:string= process.env.NEXT_PUBLIC_PUBLIC_KEY!;
   const form: any = useRef();
 
   const sendEmail = (e: any) => {
@@ -15,9 +15,9 @@ function contact() {
     emailjs
       .sendForm(
         serviceKey,
-        template,
+        templateKey,
         form.current,
-        publicKey
+        publicKey,
       )
       .then(
         () => {
