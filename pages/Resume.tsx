@@ -100,8 +100,8 @@ function resume() {
               className="flex-1 justify-center  duration-400 items-center w-full  h-10 transition 
                     md:hover:scale-105 md:hover:border-slate-700 duration-500
                   md:hover:bg-white md:hover:border-4 md:hover:text-black
-                  md:w-[7rem] md:h-[5rem]  transtion ease-in-out 
-                  bg-slate-700 text-lg font-bold text-yellow-50
+                  md:w-[7rem] md:h-[5rem]  transtion ease-in-out p-1 text-xl
+                  bg-slate-700 md:text-2xl font-bold text-yellow-50
                   ">
               Back
             </button>

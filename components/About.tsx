@@ -12,7 +12,7 @@ function About() {
       transition-all duration-300 ease-in-out justify-center w-full
         text-custom-white md:text-xl md:border-custom-gray md:border-b-2
       ">
-      <div className="md:w-[30rem] lg:w-[40rem] shadow-lg md:min-h-[40rem]">
+      <div className="md:w-[30rem] lg:w-[40rem] shadow-lg md:min-h-[40rem] w-full">
         <h1
           className="row-span-3 font-halvetica pt-6 pb-4
           text-4xl tracking-tight font-extrabold text-center text-custom-white bg-custom-gray 

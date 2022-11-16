@@ -37,7 +37,7 @@
     rounded-full;
   }
   .cubes.activeCube {
-    @apply translate-x-0 opacity-100 rounded-none gap-0 border-0;
+    @apply translate-x-0 translate-y-0 opacity-100 rounded-none gap-0 border-0;
   }
   section.active {
     @apply translate-y-0 opacity-100;
@@ -46,5 +46,9 @@
     @apply w-full
     scale-x-[2]
     bg-gradient-to-r from-red-500;
+  }
+  .cubes{
+    box-shadow:
+    5px 7px 10px rgba(0,0,0,0.7)
   }
 }

@@ -23,7 +23,7 @@ function Skills() {
         bubbles.push(
           <span
             key={counter}
-            className={`
+            className={` shadow-lg shadow-black/90 shadow-inner-lg
                    ${i === 0 ? 'text-red-500 mb-4 font-black' : 'text-black'}
                    ${
                      item === undefined || item === ' '
@@ -31,9 +31,12 @@ function Skills() {
                        : 'bg-orange-100'
                    }
                    ${j % 2 === 0 ? 'translate-x-[20vw]' : '-translate-x-[20vw]'}
+                    ${
+                      i % 2 === 0 ? 'translate-y-[20vw]' : '-translate-y-[20vw]'
+                    }
                    opacity-0 transform transition-all duration-[1.5s] ease-in-out
                     rounded-lg cubes flex justify-center items-center font-bold text-2xl 
-                    border-2  border-red-300  max-w-[3rem] max-h-[3rem] min-w-[1rem] min-h-[1rem]
+                    border-2  border-red-300  md:w-[60px] md:h-[60px] w-[1.7rem] h-[1.7rem]
                    `}>
             {item}
           </span>
@@ -70,13 +73,13 @@ function Skills() {
   return (
     <div
       className="flex justify-center flex-col
-      items-center
+      items-center 
       min-h-[40vh]
      ">
       <section
         id="tech-cubes"
-        className="  opacity-0  transition-all duration-500 ease-in-out w-[16rem] md:w-[30rem]
-      grid grid-cols-10  gap-y-2 py-4 md:m-[4rem]">
+        className="  opacity-0  transition-all duration-500 ease-in-out md:w-fit
+      grid grid-cols-10  gap-y-1 ">
         {createBubbles()}
       </section>
     </div>

@@ -5,11 +5,11 @@ import Image from 'next/image';
 function Cards(props: ICard) {
   return (
     <section
-      className="max-w-sm bg-custom-white rounded-lg border opacity-0  transition-all duration-300 ease-in-out
+      className="min-h-[10rem] max-w-[20rem] bg-custom-white rounded-lg border opacity-0  transition-all duration-300 ease-in-out m-2
  border-gray-200 shadow-lg dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
         <img
-          className=" max-h-[20rem] max-w-auto rounded-t-lg"
+          className=" max-h-[20rem] max-w-auto  rounded-t-lg"
           src={props.image}
           alt=""
         />
@@ -23,7 +23,7 @@ function Cards(props: ICard) {
         <p className="mb-3 min-h-[5rem] font-normal text-gray-700 dark:text-gray-400">
           {props.description}
         </p>
-        <div className="flex flex-row w-[70%] md:w-[50%] justify-between">
+        <div className="flex flex-row w-[70%] md:w-[60%] justify-between">
           <a
             href={props.link}
             target="_blank"

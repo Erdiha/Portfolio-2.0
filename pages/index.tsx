@@ -68,7 +68,7 @@ const Home: NextPage = () => {
         </div>
 
         <Projects />
-        <div className="bg-gradient-to-b from-slate-400 to-white mt-12">
+        <div className="bg-gradient-to-b from-slate-400 to-white mt-[5rem]">
           <About />
           <Contact />
         </div>
