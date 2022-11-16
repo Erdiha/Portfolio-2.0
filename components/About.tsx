@@ -14,11 +14,11 @@ function About() {
       ">
       <div className="md:w-[30rem] lg:w-[40rem] shadow-lg md:min-h-[40rem] w-full">
         <h1
-          className="row-span-3 font-halvetica pt-6 pb-4
+          className="row-span-3 font-halvetica pt-6 pb-4 flex justify-center flex-col items-center
           text-4xl tracking-tight font-extrabold text-center text-custom-white bg-custom-gray 
           ">
           About
-          <hr className="w-[40%] m-auto flex items-center md:m-2 mt-4" />
+          <hr className="w-[40%] md:m-2 mt-4" />
         </h1>
         <div className="bg-custom-gray md:p-12 md:min-h-[50%] p-4">
           <span className=" text-[20px] border-l-[1px] pl-1 border-custom-blue">
@@ -52,7 +52,7 @@ function About() {
               href="../static/Erdi_Haciogullari_Resume.pdf"
               target="_blank"
               rel="noreferrer"
-              className="p-2 border-[1px]   text-custom-blue font-semibold">
+              className="p-2 border-[1px] text-center   text-custom-blue font-semibold">
               PDF
             </a>
 
@@ -66,17 +66,16 @@ function About() {
         <div className="grid grid-rows-2 items-center mt-2">
           <div className="grid row-span-2 p-3">
             <ul
-              className="grid h-full grid-cols-3 justify-around p-2 items-center 
-          ">
-              <li className="md:hover:text-whitel text-black cursor-pointer border-r-[1px] text-center">
+              className="grid h-full grid-cols-3 justify-around p-2 items-center">
+              <a href="https://github.com/Erdiha" target="_blank" rel="noreferrer" className="md:hover:text-white text-black cursor-pointer border-r-[1px] text-center">
                 <GitHubIcon fontSize="large" />
-              </li>
-              <li className="md:hover:text-white text-black cursor-pointer  border-r-[1px] text-center">
+              </a>
+              <a href="https://www.linkedin.com/in/erdi-haciogullari-919246222/" rel="noreferrer" target="_blank" className="md:hover:text-white text-black cursor-pointer  border-r-[1px] text-center">
                 <LinkedInIcon fontSize="large" />
-              </li>
-              <li className="md:hover:text-white cursor-pointer text-black text-center">
+              </a>
+              <a href="https://app.joinhandshake.com/stu/users/18554836" target="_blank"  rel="noreferrer" className="md:hover:text-white cursor-pointer text-black text-center">
                 <HandshakeIcon fontSize="large" />
-              </li>
+              </a>
             </ul>
           </div>
         </div>
