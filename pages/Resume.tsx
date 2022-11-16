@@ -252,7 +252,7 @@ function resume() {
                     Demonstrated leadership, time management, multi-tasking, and
                     property management skills.
                   </li>
-                </ul>
+              </ul>
                 <hr className="border-[1px] border-gray-300 m-2" />
                 <i className="font-semibold  text-[13px]  text-gray-700">
                   DOMA Project

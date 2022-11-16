@@ -29,11 +29,11 @@ function About() {
           </span>
           <ol className="list-disc list-inside md:p-2 md:my-2 ">
             <li>I can adapt and learn fast.</li>
-            <li>I handle responsibilities with great care.</li>
+            <li>I handle responsibilities with professionalism and care.</li>
             <li>I am a team-player and fun to work with!</li>
             <li>
-              I have passion, skills, and unique perspective for
-              responsive,adaptive, and user-friendly Apps/Websites.
+              I have passion, skills, and a unique perspective for
+              responsive, adaptive, and user-friendly apps and websites.
             </li>
           </ol>
         </div>

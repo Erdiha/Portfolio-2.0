@@ -4,7 +4,9 @@ import emailjs from '@emailjs/browser';
 function contact() {
   const [sent, setSent]: any = useState(false);
   const handleOnChange = (e: any) => {};
-
+  const serviceKey:any = process.env.NEXT_PUBLIC_EMAIL_SERVICE;
+  const template:any = process.env.NEXT_PUBLIC_TEMPLATE;
+  const publicKey:any= process.env.NEXT_PUBLIC_PUBLIC_KEY;
   const form: any = useRef();
 
   const sendEmail = (e: any) => {
@@ -12,10 +14,10 @@ function contact() {
 
     emailjs
       .sendForm(
-        'service_3ep4cz1',
-        'template_xi186r1',
+        serviceKey,
+        template,
         form.current,
-        'GGteIczQ632Mu9JBw'
+        publicKey
       )
       .then(
         () => {
@@ -32,7 +34,7 @@ function contact() {
       <section
         id="contact"
         className="flex flex-col items-center justify-center w-full p-2 text-custom-white
-        transition-all duration-300 ease-in-out 
+        transition-all duration-300 ease-in-out  transform
       md:mx-auto pt-10 scroll-mt-[5rem] ">
         <section className="w-full md:w-[30rem] lg:w-[40rem] shadow-lg p-5  bg-custom-gray">
           <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
@@ -49,9 +51,9 @@ function contact() {
                   Contact
                 </h2>
                 <p className="mb-8 lg:mb-16 font-light text-center  sm:text-xl">
-                  Want to send feedback about a feature? Need details about
-                  Projects? For anything else please,
-                  <span> Get In Touch.</span>
+                 Send feedback about a feature. Ask about my projects.
+                 For anything else please,
+                  <span> get in touch!</span>
                 </p>
                 <form
                   ref={form}

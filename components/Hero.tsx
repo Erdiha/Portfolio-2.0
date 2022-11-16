@@ -7,12 +7,11 @@ function Hero() {
   const heroParagraph = () => {
     const store: any = [];
     const word: any = [
-      'Somehow,',
-      'Jobs,',
-      'Get,',
-      'Done,',
-      'When,',
-      'I am around.',
+      'Ready',
+      'To',
+      'Do',
+      'It',
+      'Well.'
     ];
     word.forEach((item: string, index: number) => {
       store.push(
@@ -26,7 +25,7 @@ function Hero() {
 
   let store: any = [];
   const heroBackground = () => {
-    for (let index = 0; index < 200; index++) {
+    for (let index = 0; index < 150; index++) {
       store.push(
         <span
           key={index}

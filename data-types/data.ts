@@ -9,9 +9,9 @@ export const projectLinks = [
 ];
 export const projectDescriptions = [
   'MyFlix is a Netflix mockup website I created using tailwind, NextJS, React, JS, and Firebase',
-  'MyCamper is a park finder lets you create account, search any National parks in USA, save National Parks , and more...',
-  'Quiz game is a fun side project that I created which can be played with one or two people.',
-  'Cya App is a scheduling app I helped create along with four of my classmates as our final project at UCLA.',
+  'MyCamper is an individualized park finder allowing users to search for and bookmark any national park in the US.',
+  'Quiz Game is a fun little side project, which can be played with one or two people.',
+  'Cya App is a scheduling app I created along with four of my classmates as our final project at UCLA.',
 ];
 
 export const techUsed = [

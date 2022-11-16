@@ -80,8 +80,8 @@ function Navbar() {
          <Link href={item} scroll={scrll}>
           <li className={`mx-auto text-center navbar-item cursor-pointer 
           ${scrollPosition < 1300 && htmlNames[index] === 'HOME' && 'bg-custom-blue text-black font-bold'}
-          ${scrollPosition < 3300 && scrollPosition >2543 && htmlNames[index] === 'ABOUT' && 'bg-custom-blue text-black font-bold'}
-          ${scrollPosition > 3300 && htmlNames[index] === 'CONTACT' && 'bg-custom-blue text-black font-bold'}
+          ${scrollPosition < 3000 && scrollPosition >2543 && htmlNames[index] === 'ABOUT' && 'bg-custom-blue text-black font-bold'}
+          ${scrollPosition > 3000 && htmlNames[index] === 'CONTACT' && 'bg-custom-blue text-black font-bold'}
           ${scrollPosition > 1300 && scrollPosition < 2543 && htmlNames[index] === 'PROJECTS' && 'bg-custom-blue text-black font-bold'}`}>
             {htmlNames[index]}
           </li>
