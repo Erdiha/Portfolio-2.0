@@ -8,7 +8,7 @@ export const projectNames = [
 	'Cya App',
 ];
 export const projectLinks = [
-	'https://main--fabulous-valkyrie-e036e0.netlify.app/',
+	'http://thoodies.com/',
 	'https://myflix-eight.vercel.app/',
 	'https://main--effortless-kangaroo-bb5cd4.netlify.app/',
 	'https://main.d2en2iuoalsx7.amplifyapp.com/',
