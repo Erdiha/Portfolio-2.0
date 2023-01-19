@@ -17,7 +17,6 @@ function resume() {
     getSkillWrapper = document.querySelectorAll('.skill-wrapper')!;
     getResumeIcon = document.getElementById('resume-icon')!;
     getResumeColumns = document.getElementById('resume-columns')!;
-    console.log('this is pdfref', getResumeColumns);
     if (marginHandle) {
       getResumeIcon?.classList.remove('pb-6', 'px-4');
       getResumeColumns?.classList.add('flex-col');
@@ -45,7 +44,6 @@ function resume() {
     }
 
     const doc: any = new jsPDF('p', 'pt', 'letter', true);
-    innerW < 1011 && console.log(innerW);
     doc.html(content, {
       callback: function (doc: any) {
         doc.save('Erdi_Haciogullari_Resume.pdf');
@@ -67,7 +65,7 @@ function resume() {
       'BootStrap',
       'React',
       'Python',
-      'C/C#',
+      'C++/C#',
       'NextJS',
       'Recoil',
       'MongoDB',

@@ -1,5 +1,8 @@
 import { ICard } from './types';
 
+export const pitchParagraph =
+	"Welcome to my portfolio, where you'll find my skills, experience, and projects.";
+
 export const projectNames = [
 	'Thoodies',
 	'MyFlix',

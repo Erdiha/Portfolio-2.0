@@ -27,6 +27,9 @@
       to(rgba(0, 0, 0, 0))
     );
   }
+  .will-change-transform {
+  will-change: transform;
+}
   .active-icon {
     @apply top-[15rem]  w-full h-[24rem]
     text-sm rounded-none border-none;
