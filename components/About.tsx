@@ -49,7 +49,7 @@ function About() {
           <div className="grid grid-cols-2 gap-4 py-2 ">
             <a
               download
-              href="../static/Erdi_Haciogullari_Resume.pdf"
+              href="../static/erdi-haciogullari-resume.pdf"
               target="_blank"
               rel="noreferrer"
               className="p-2 border-[1px] text-center   text-custom-blue font-semibold">
